@@ -23,12 +23,12 @@
 [Desktop Entry]
 Name=Hello World
 Type=Service
-MimeType=all/all;
-Icon=
-Actions=HelloWorld;
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+Icon=folder-remote-symbolic
+MimeType=inode/directory;
+Actions=HelloWorld;
 
 [Desktop Action HelloWorld]
 Name=Hello World
-Icon=
+Icon=folder-remote-symbolic
 Exec=IFS=:; for dir in $(kf5-config --path services); do command="$dir/ServiceMenus/hello-world.sh"; if [ -x "$command" ]; then $command "%f"; break; else kdoalog --error "command not found: $command"; fi; done

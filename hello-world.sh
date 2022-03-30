@@ -30,35 +30,21 @@
 MY_PATH="${BASH_SOURCE[0]}"
 MY_FILE="${MY_PATH##*/}"
 MY_NAME="${MY_FILE%%.*}"
-MY_CONFIG="${MY_NAME}.config"
+MY_CONFIG="${MY_NAME}.config" # is $HOME/.config/hello-world.config
 
 # no arguments? quit!
-(( $# == 0 )) && exit 128
+(( $# == 0 )) && printf '%s\n' "usage: $MY_NAME <foo>" && exit 128
 
 # main function
 _main ()
 {
     _message_text="Hello World"
     kdialog \
-      --title 'Hello' \
-      --yes-label 'Hello' \
-      --no-label 'Cancel' \
-      --warningyesno "$_message_text" \
+      --title 'hello-world' \
+      --ok-label 'Hello' \
+      --msgbox "$_message_text" \
       --dontagain "${MY_CONFIG}:first_run"
-    if (( $? == 0 )); then
-        return 0
-    else
-        # bug or feature?
-        # kdialog remembers OK or CANCEL last decision
-        # when do not display again option is cheched. so if user(in)
-        # checks "do not display again" _and_ Cancel the operation,
-        # kdialog will always return false on every next invocation.
-        # so we delete config file immediatly on Cancel and ensure
-        # dialog will pop up on next run.
-        rm ~/.config/"$MY_CONFIG"
-        return 1 # canceled
-    fi
 }
 
-# call main with all remaining command line arguments
-_main "$@"
+# call main with command line argument
+_main "$1"
