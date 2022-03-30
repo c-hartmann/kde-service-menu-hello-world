@@ -1,0 +1,34 @@
+#
+# 	servicemenus-hello-world.desktop Version 0.1.0
+# 	Copyright (C) 2022 Christian Hartmann <hartmann.christian@gmail.com>
+#
+#       SPDX-FileCopyrightText: 2022 Christian Hartmann <hartmann.christian@gmail.com>
+#
+#       SPDX-License-Identifier: LicenseRef-KDE-Accepted-GPL
+#
+#       This program is free software; you can redistribute it and/or
+#       modify it under the terms of the GNU General Public License as
+#       published by the Free Software Foundation; either version 3 of
+#       the license or (at your option) at any later version that is
+#       accepted by the membership of KDE e.V. (or its successor
+#       approved by the membership of KDE e.V.), which shall act as a
+#       proxy as defined in Section 14 of version 3 of the license.
+#
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#       GNU General Public License for more details.
+#
+
+[Desktop Entry]
+Name=Hello World
+Type=Service
+MimeType=all/all;
+Icon=
+Actions=HelloWorld;
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+
+[Desktop Action HelloWorld]
+Name=Hello World
+Icon=
+Exec=IFS=:; for dir in $(kf5-config --path services); do command="$dir/ServiceMenus/hello-world.sh"; if [ -x "$command" ]; then $command "%f"; break; else kdoalog --error "command not found: $command"; fi; done
