@@ -24,15 +24,13 @@
 #       GNU General Public License for more details.
 #
 
-
-
-# some useful helpers
+# some eventually useful helpers
 MY_PATH="${BASH_SOURCE[0]}"
 MY_FILE="${MY_PATH##*/}"
 MY_NAME="${MY_FILE%%.*}"
 MY_CONFIG="${MY_NAME}.config" # is $HOME/.config/hello-world.config
 
-# no arguments? quit!
+# no arguments? quit! (althoug we do not make any use of it)
 (( $# == 0 )) && printf '%s\n' "usage: $MY_NAME <foo>" && exit 128
 
 # main function
@@ -46,5 +44,5 @@ _main ()
       --dontagain "${MY_CONFIG}:first_run"
 }
 
-# call main with command line argument
-_main "$1"
+# say hello
+_main
