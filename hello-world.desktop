@@ -30,5 +30,6 @@ Actions=HelloWorld;
 
 [Desktop Action HelloWorld]
 Name=Hello World
+Name[de]=Hallo Welt
 Icon=folder-remote-symbolic
 Exec=IFS=:; for dir in $(kf5-config --path services); do command="$dir/ServiceMenus/hello-world.sh"; if [ -x "$command" ]; then $command "%f"; break; else kdialog --error "command not found: $command"; fi; done
