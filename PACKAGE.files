@@ -1,7 +1,5 @@
 ./share/kservices5/ServiceMenus/hello-world.desktop
 ./share/kservices5/ServiceMenus/hello-world.sh
 ./share/org.kde.servicemenus.hello-world/locale/HOWTO.sh
-./share/org.kde.servicemenus.hello-world/locale/de/
-./share/org.kde.servicemenus.hello-world/locale/de/LC_MESSAGES/
 ./share/org.kde.servicemenus.hello-world/locale/de/LC_MESSAGES/hello-world.mo
 ./share/org.kde.servicemenus.hello-world/locale/de/LC_MESSAGES/hello-world.po
