@@ -48,16 +48,20 @@ export TEXTDOMAINDIR="${MY_DATA_DIR}/org.kde.servicemenus.${MY_NAME}/locale"
 # (as this is an example first. we do not make any use of it here)
 (( $# == 0 )) && printf '%s\n' "usage: $MY_NAME <foo>" && exit 128
 
+# use a commnon idiom for gettext (be aware of the required trailing space)
+_ ()
+{
+    gettext "$1"
+}
+
 # main function
 _main ()
 {
-    # read a translated version of Hello World or use a default
-    local _message_text_i10n="$(gettext 'Hello World')"
-    local _message_text="${_message_text_i10n:-'Hello World'}"
+    # read a translated version of Hello World
+    local _message_text="$(_ 'Hello World')"
 
     # same procedure for the OK button label
-    local _ok_button_label_i10n="$(gettext 'Hello')"
-    local _ok_button_label="${_ok_button_label_i10n:-'Hello'}"
+    local _ok_button_label="$(_ 'Hello')"
 
     kdialog \
       --title     "$_message_text" \
